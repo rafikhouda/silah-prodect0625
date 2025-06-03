@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>منتج سيلا - العناية بالشعر</title>
+  <style>
+    body {
+      font-family: 'Noto Sans Arabic', sans-serif;
+      background: #f3f3f3;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to left, #4CAF50, #81C784);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    img.product-img {
+      width: 100%;
+      border-radius: 10px;
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    h2 {
+      color: #388E3C;
+      margin-top: 30px;
+    }
+
+    h3 {
+      color:#2e7d32; 
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    h2 span{
+      color: #000;
+      font-size: small;
+    }
+
+    ul {
+      padding-right: 20px;
+    }
+
+    .order-section {
+      background: #e8f5e9;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+
+    label,
+    select,
+    input,
+    button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 1rem;
+    }
+
+    select, input {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #388E3C;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 999;
+    }
+
+    .whatsapp-float.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* 🔁 استجابة للموبايل */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      button {
+        font-size: 1rem;
+      }
+
+      .order-section {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌿 منتج سيلا - سر جمال شعرك 🌿</h1>
+  </header>
+
+  <div class="container">
+    <img src="product.jpg" alt="منتج سيلا" class="product-img"/>
+
+    <section class="features">
+      <h2>✨ الخصائص:</h2>
+      <ul>
+        <li>يقضي على القشرة</li>
+        <li>يعالج تساقط الشعر</li>
+        <li>يعطي قوة، حيوية ولمعان</li>
+        <li>يعزز نمو الشعر ويطوله</li>
+        <li>يقضي على القمل بإضافة خل التفاح</li>
+      </ul>
+    </section>
+
+    <section class="usage">
+      <h2>🍲 طريقة الاستعمال:</h2>
+      <p>
+        تخلط الكمية المناسبة من بودرة سيلا بالماء المغلي حتى يصبح متجانسًا مع إضافة ملعقة كبيرة من زيت سيلا،
+        وتُدلّك به فروة الرأس ثم يُغطى بالنيلون لمدة ساعتين، ثم يُترك ساعتين أخريين ويُغسل. 
+        يُستعمل مرة في الأسبوع أو مرتين مع إضافة بيضة لنتائج مدهشة.
+      </p>
+      <h3>💵 السعر: 1300 دج</h3>
+    </section>
+
+    <section class="order-section">
+      <h2>📦 اطلب الآن <span>(متاح فقط بولاية غرداية)</span>:</h2>
+      <label for="commune">اختر البلدية:</label>
+      <select id="commune">
+        <option value="">-- اختر --</option>
+        <option>غرداية</option>
+        <option>المنيعة</option>
+        <option>متليلي</option>
+        <option>القرارة</option>
+        <option>ضاية بن ضحوة</option>
+        <option>بريان</option>
+        <option>سبسب</option>
+        <option>زلفانة</option>
+        <option>العطف</option>
+        <option>بنورة</option>
+        <option>بن يزقن</option>
+        <option>مليكة</option>
+        <option>واد نشو</option>
+      </select>
+
+      <label for="phone">رقم الهاتف:</label>
+      <input type="tel" id="phone" placeholder="مثال: 0650000000"/>
+
+      <button onclick="sendWhatsAppOrder()">طلب عبر الواتساب</button>
+    </section>
+  </div>
+
+  <!-- أيقونة واتساب -->
+  <a id="whatsappIcon" class="whatsapp-float" href="https://wa.me/213778850383" target="_blank" title="تواصل عبر واتساب">
+    🟢
+  </a>
+
+  <script>
+    function sendWhatsAppOrder() {
+      const commune = document.getElementById('commune').value;
+      const phone = document.getElementById('phone').value.trim();
+      if (!commune || !phone) {
+        alert("يرجى إدخال البلدية ورقم الهاتف قبل إرسال الطلب.");
+        return;
+      }
+
+      const message = أرغب في طلب منتج سيلا من بلدية ${commune}، ورقمي هو ${phone};
+      const encodedMsg = encodeURIComponent(message);
+      const waLink = https://wa.me/213778850383?text=${encodedMsg};
+      window.open(waLink, '_blank');
+    }
+
+    // عرض أيقونة واتساب عند نهاية الصفحة
+    window.addEventListener('scroll', function () {
+      const icon = document.getElementById('whatsappIcon');
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+        icon.classList.add('visible');
+      } else {
+        icon.classList.remove('visible');
+      }
+    });
+  </script>
+
+</body>
+</html>
