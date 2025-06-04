@@ -201,18 +201,18 @@
 
   <script>
     function sendWhatsAppOrder() {
-      const commune = document.getElementById('commune').value;
-      const phone = document.getElementById('phone').value.trim();
-      if (!commune || !phone) {
-        alert("يرجى إدخال البلدية ورقم الهاتف قبل إرسال الطلب.");
-        return;
-      }
+  const commune = document.getElementById('commune').value;
+  const phone = document.getElementById('phone').value.trim();
+  if (!commune || !phone) {
+    alert("يرجى إدخال البلدية ورقم الهاتف قبل إرسال الطلب.");
+    return;
+  }
 
-      const message = أرغب في طلب منتج سيلا من بلدية ${commune}، ورقمي هو ${phone};
-      const encodedMsg = encodeURIComponent(message);
-      const waLink = https://wa.me/213778850383?text=${encodedMsg};
-      window.open(waLink, '_blank');
-    }
+  const message = `أرغب في طلب منتج سيلا من بلدية ${commune}، ورقمي هو ${phone}`;
+  const encodedMsg = encodeURIComponent(message);
+  const waLink = `https://wa.me/213778850383?text=${encodedMsg}`; // ← رقمك هنا
+  window.location.href = waLink;
+}
 
     // عرض أيقونة واتساب عند نهاية الصفحة
     window.addEventListener('scroll', function () {
