@@ -66,13 +66,41 @@
 
     label,
     select,
-    input,
-    button {
+    input
+     {
       width: 100%;
       margin: 10px 0;
       padding: 12px;
       font-size: 1rem;
     }
+
+    button#order-btn{
+    padding: 10px 20px;
+    background-color: #25d366; /* لون واتساب */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: auto;
+    display: block;       /* ← مهم */
+    margin: 10px auto;
+    }
+
+    button#order-btn:hover {
+  background-color: #1da851;
+}
+
+    input[type="tel"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  direction: rtl;
+}
 
     select, input {
       border: 1px solid #ccc;
@@ -169,7 +197,7 @@
 
     <section class="order-section">
       <h2>📦 اطلب الآن <span>(متاح فقط بولاية غرداية)</span>:</h2>
-      <label for="commune">اختر البلدية:</label>
+      <label for="commune">اختر البلدية أو القصر:</label>
       <select id="commune">
         <option value="">-- اختر --</option>
         <option>غرداية</option>
@@ -188,9 +216,9 @@
       </select>
 
       <label for="phone">رقم الهاتف:</label>
-      <input type="tel" id="phone" placeholder="مثال: 0650000000"/>
+      <input type="tel" id="phone" name="phone" placeholder="مثال: 0650000000" required/>
 
-      <button onclick="sendWhatsAppOrder()">طلب عبر الواتساب</button>
+      <button id="order-btn" onclick="sendWhatsAppOrder()">طلب عبر الواتساب</button>
     </section>
   </div>
 
@@ -215,14 +243,14 @@
 }
 
     // عرض أيقونة واتساب عند نهاية الصفحة
-    window.addEventListener('scroll', function () {
-      const icon = document.getElementById('whatsappIcon');
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
-        icon.classList.add('visible');
-      } else {
-        icon.classList.remove('visible');
-      }
-    });
+    // window.addEventListener('scroll', function () {
+    //   const icon = document.getElementById('whatsappIcon');
+    //   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+    //     icon.classList.add('visible');
+    //   } else {
+    //     icon.classList.remove('visible');
+    //   }
+    // });
   </script>
 
 </body>
